@@ -3,9 +3,11 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from dotenv import load_dotenv
+from flask_cors import CORS  # 引入 CORS 库
 import os
 
 app = Flask(__name__)
+CORS(app)  # 允许所有来源访问
 
 # 加载环境变量
 load_dotenv()
@@ -17,14 +19,6 @@ SMTP_USERNAME = "projectuse213@gmail.com"
 SMTP_PASSWORD = "mscroybsuxckbwuu"
 EMAIL_FROM = SMTP_USERNAME
 EMAIL_TO = "qifanc666@gmail.com"  # 将此替换为你希望接收邮件的邮箱
-
-from flask import Flask, request, jsonify
-from flask_cors import CORS  # 引入 CORS 库
-
-app = Flask(__name__)
-CORS(app)  # 允许所有来源访问
-
-# 你的其他代码
 
 
 @app.route('/contact', methods=['POST'])
@@ -72,12 +66,6 @@ def contact():
 
 @app.route('/subscribe', methods=['POST'])
 def subscribe():
-    from flask import Flask, request, jsonify
-    from flask_cors import CORS  # 引入 CORS 库
-
-    app = Flask(__name__)
-    CORS(app)  # 允许所有来源访问
-
     data = request.json
     email = data.get('EMAIL')
 
@@ -108,6 +96,7 @@ def subscribe():
     except Exception as e:
         print(f"Error: {str(e)}")
         return jsonify({"code": 500, "message": "Something went wrong, please try again later."}), 500
+
 
 if __name__ == '__main__':
     app.run(debug=True)
