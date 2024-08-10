@@ -16,7 +16,7 @@ load_dotenv()
 SMTP_SERVER = "smtp.gmail.com"
 SMTP_PORT = 587
 SMTP_USERNAME = "projectuse213@gmail.com"
-SMTP_PASSWORD = "mscroybsuxckbwuu"
+SMTP_PASSWORD = "xxxxxxxxx"
 EMAIL_FROM = SMTP_USERNAME
 EMAIL_TO = "qifanc666@gmail.com"  # 将此替换为你希望接收邮件的邮箱
 
